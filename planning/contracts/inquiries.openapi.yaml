@@ -1,0 +1,169 @@
+openapi: 3.0.3
+info:
+  title: Beaverton Reptiles Inquiry API
+  version: 1.0.0
+  description: |
+    Server-side lead capture endpoint for the Beaverton Reptiles website.
+    The frontend contact and get-started forms POST JSON to this route.
+servers:
+  - url: /
+paths:
+  /api/inquiries:
+    post:
+      summary: Submit a contact or guided-start inquiry
+      description: |
+        Accepts website lead submissions for general contact and beginner setup requests.
+        Requests are validated, rate limited by source IP, and stored in the local development submission log.
+      operationId: createInquiry
+      tags:
+        - Inquiries
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InquiryRequest"
+            examples:
+              contact:
+                summary: Contact page example
+                value:
+                  source: contact
+                  name: Jamie Rivera
+                  email: jamie@example.com
+                  phone: 503-555-0147
+                  interestCategory: Feeders
+                  message: I want to confirm feeder insect availability before driving in from Tigard.
+              getStarted:
+                summary: Get started page example
+                value:
+                  source: get-started
+                  name: Avery Chen
+                  email: avery@example.com
+                  interestCategory: Habitats
+                  experienceLevel: Brand new
+                  budget: $150 to $400
+                  message: I need help choosing a beginner-friendly reptile setup for my family.
+      responses:
+        "200":
+          description: Inquiry accepted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InquirySuccessResponse"
+              examples:
+                success:
+                  value:
+                    data:
+                      id: 5bd6ff88-4912-4909-89c4-a15f87554f4b
+                    message: Thanks. We received your message and will follow up soon.
+        "400":
+          description: Validation or content-type failure
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InquiryErrorResponse"
+              examples:
+                invalidRequest:
+                  value:
+                    error:
+                      code: INVALID_REQUEST
+                      message: Field "message" must be between 10 and 1200 characters.
+                    message: Field "message" must be between 10 and 1200 characters.
+        "429":
+          description: Too many submissions from the same IP within the current window
+          headers:
+            Retry-After:
+              description: Seconds until a retry is allowed
+              schema:
+                type: integer
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InquiryErrorResponse"
+              examples:
+                rateLimited:
+                  value:
+                    error:
+                      code: RATE_LIMITED
+                      message: Too many inquiries from this network. Please try again shortly.
+                    message: Too many inquiries from this network. Please try again shortly.
+        "500":
+          description: Unexpected persistence failure
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InquiryErrorResponse"
+components:
+  schemas:
+    InquiryRequest:
+      type: object
+      additionalProperties: false
+      required:
+        - source
+        - name
+        - email
+        - message
+      properties:
+        source:
+          type: string
+          enum: [contact, get-started]
+        name:
+          type: string
+          minLength: 2
+          maxLength: 80
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        phone:
+          type: string
+          minLength: 7
+          maxLength: 20
+        interestCategory:
+          type: string
+          enum: [Reptiles, Feeders, Habitats, Supplies]
+        experienceLevel:
+          type: string
+          enum: [Brand new, Some experience, Experienced keeper]
+        budget:
+          type: string
+          enum: [Under $150, $150 to $400, $400 to $900, $900+]
+        message:
+          type: string
+          minLength: 10
+          maxLength: 1200
+    InquirySuccessResponse:
+      type: object
+      required:
+        - data
+        - message
+      properties:
+        data:
+          type: object
+          required:
+            - id
+          properties:
+            id:
+              type: string
+              format: uuid
+        message:
+          type: string
+    InquiryErrorResponse:
+      type: object
+      required:
+        - error
+        - message
+      properties:
+        error:
+          type: object
+          required:
+            - code
+            - message
+          properties:
+            code:
+              type: string
+              enum: [INVALID_REQUEST, RATE_LIMITED, INQUIRY_SUBMISSION_FAILED]
+            message:
+              type: string
+        message:
+          type: string

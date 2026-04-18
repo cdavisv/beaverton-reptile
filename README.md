@@ -66,7 +66,11 @@ Then open `http://localhost:3000`.
 ## Inquiry Handling
 
 - Contact and get-started forms submit to `POST /api/inquiries`
-- In local development, submissions are appended to `data/submissions/inquiries.jsonl`
+- Requests must use `Content-Type: application/json`
+- The endpoint validates source, contact fields, enumerated select values, and message length before persisting
+- Responses return `200` with `{ data: { id }, message }`, `400` with `{ error, message }` for invalid requests, and `429` with `Retry-After` when the same IP exceeds 5 submissions in 10 minutes
+- In local development, submissions are appended to `data/submissions/inquiries.jsonl` with generated IDs, timestamps, source IP, and user agent metadata
+- The machine-readable contract for frontend and downstream integrations lives at `planning/contracts/inquiries.openapi.yaml`
 - This is a low-ops v1 implementation intended to keep the user-facing flow complete without adding external infrastructure
 
 ## Quality Checks
@@ -89,11 +93,13 @@ Use this checklist after the first run:
 2. All required routes are reachable from the primary nav or footer.
 3. The contact page shows hours, address, map embed, and the inquiry form.
 4. Submitting a local form creates or appends `data/submissions/inquiries.jsonl`.
-5. `npm test -- --coverage` reports at least 80% total coverage for the measured shared code.
-6. `npm run build` completes successfully.
+5. Repeating more than 5 submissions from the same IP inside 10 minutes returns `429` from `POST /api/inquiries`.
+6. `npm test -- --coverage` reports at least 80% total coverage for the measured shared code.
+7. `npm run build` completes successfully.
 
 ## Assumptions To Replace Before Production
 
 - Public contact details, hours, and the store address are currently implementation defaults because authoritative business data was not present in the repo brief.
 - Social profile links are placeholders and should be replaced with the store’s real accounts.
 - The in-repo file-based inquiry handler is suitable for local development and demos; production deployment should connect the same route to a durable notification or CRM destination.
+- The current rate limiter is process-local memory, which is acceptable for single-instance development and demo deployments but should move to a shared store if the site later runs across multiple server instances.
