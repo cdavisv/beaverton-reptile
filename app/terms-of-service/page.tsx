@@ -52,13 +52,16 @@ export default function TermsOfServicePage() {
               </p>
             </section>
           </div>
-          <aside className="surface legal-callout stack">
-            <h2>Questions?</h2>
+          <section
+            className="surface legal-callout stack"
+            aria-labelledby="terms-questions-title"
+          >
+            <h2 id="terms-questions-title">Questions?</h2>
             <p>
               Use the contact page if you need clarification about site terms or
               store policies.
             </p>
-          </aside>
+          </section>
         </div>
       </section>
     </>

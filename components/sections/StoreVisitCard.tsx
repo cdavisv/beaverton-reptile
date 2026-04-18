@@ -2,10 +2,13 @@ import { siteConfig } from "@/content/site";
 
 export function StoreVisitCard() {
   return (
-    <aside className="surface visit-card">
+    <section
+      className="surface visit-card"
+      aria-labelledby="store-visit-card-title"
+    >
       <div className="stack">
         <span className="eyebrow">Visit essentials</span>
-        <h2>Plan a smooth store visit.</h2>
+        <h2 id="store-visit-card-title">Plan a smooth store visit.</h2>
         <p>{siteConfig.serviceArea}</p>
         <div className="stack">
           {siteConfig.hours.map((entry) => (
@@ -25,6 +28,6 @@ export function StoreVisitCard() {
           Open directions in Google Maps
         </a>
       </div>
-    </aside>
+    </section>
   );
 }

@@ -10,6 +10,7 @@ The repo includes:
 - A low-ops in-repo inquiry handler that stores submissions locally during development
 - Planning artifacts in `planning/website/*` that define the sitemap, copy direction, design system, and SEO map
 - Jest and React Testing Library coverage for reusable UI and form logic
+- Playwright browser coverage for the live inquiry submission flow
 
 ## Stack
 
@@ -20,6 +21,7 @@ The repo includes:
 - TypeScript strict mode
 - CSS custom properties and shared section components
 - Jest + React Testing Library
+- Playwright
 
 ## Project Structure
 
@@ -81,6 +83,7 @@ Run the full local verification set:
 npm run lint
 npm run typecheck
 npm test -- --coverage
+npm run test:e2e
 npm run build
 npm run format:check
 ```
@@ -94,8 +97,9 @@ Use this checklist after the first run:
 3. The contact page shows hours, address, map embed, and the inquiry form.
 4. Submitting a local form creates or appends `data/submissions/inquiries.jsonl`.
 5. Repeating more than 5 submissions from the same IP inside 10 minutes returns `429` from `POST /api/inquiries`.
-6. `npm test -- --coverage` reports at least 80% total coverage for the measured shared code.
-7. `npm run build` completes successfully.
+6. `npm run test:e2e` submits the contact form in Chromium and verifies a persisted inquiry record.
+7. `npm test -- --coverage` reports at least 80% total coverage for the measured shared code.
+8. `npm run build` completes successfully.
 
 ## Assumptions To Replace Before Production
 
