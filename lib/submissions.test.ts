@@ -9,12 +9,18 @@ jest.mock("node:fs/promises", () => ({
 
 describe("persistInquiry", () => {
   it("writes inquiry data to disk", async () => {
-    await persistInquiry({
-      email: "jamie@example.com",
-      message: "Need setup help.",
-      name: "Jamie",
-      source: "contact",
-    });
+    const record = await persistInquiry(
+      {
+        email: "jamie@example.com",
+        message: "Need setup help.",
+        name: "Jamie",
+        source: "contact",
+      },
+      {
+        ipAddress: "127.0.0.1",
+        userAgent: "jest",
+      },
+    );
 
     expect(mkdir).toHaveBeenCalled();
     expect(appendFile).toHaveBeenCalledWith(
@@ -22,5 +28,7 @@ describe("persistInquiry", () => {
       expect.stringContaining('"source":"contact"'),
       "utf8",
     );
+    expect(record.ipAddress).toBe("127.0.0.1");
+    expect(record.id).toEqual(expect.any(String));
   });
 });
