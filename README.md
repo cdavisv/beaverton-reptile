@@ -11,6 +11,8 @@ The current repo state is a foundation handoff, not a shipped app yet. It includ
 - `planning/website/seo-map.md`: search intent, metadata direction, internal linking, and schema recommendations
 - `planning/website/foundation.md`: design-system architecture, layout framework, responsive strategy, and repo topology guidance
 - `planning/website/design-system.css`: implementation-ready CSS custom properties, theme tokens, and layout primitives
+- `planning/website/design-tokens.json`: semantic design token catalog with light/dark values and accessibility notes
+- `planning/website/component-library.md`: component specs, interaction states, secondary-page templates, and UI QA checklist
 - `planning/contracts/site-content.schema.json`: JSON Schema for shared structured content across the marketing site
 
 ## Planned Stack Assumption
@@ -61,7 +63,9 @@ Use this checklist to confirm the repo contains the expected foundation artifact
 2. `planning/website/page-briefs.md` exists and includes page-specific calls to action.
 3. `planning/website/seo-map.md` exists and maps metadata and schema by page intent.
 4. `planning/website/design-system.css` exists and defines light, dark, and system theme tokens.
-5. `planning/contracts/site-content.schema.json` validates the planned structured content model.
+5. `planning/website/design-tokens.json` exists and mirrors the token semantics used in CSS.
+6. `planning/website/component-library.md` exists and covers components plus required secondary-page templates.
+7. `planning/contracts/site-content.schema.json` validates the planned structured content model.
 
 ## Next Implementation Priorities
 

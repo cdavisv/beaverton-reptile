@@ -1,0 +1,170 @@
+{
+  "meta": {
+    "project": "Beaverton Reptiles",
+    "version": "1.0.0",
+    "system": "warm-terrarium",
+    "notes": [
+      "Use semantic tokens in product code rather than raw hex values.",
+      "Primary interactive text/background pairs meet WCAG AA or better for normal text.",
+      "Minimum touch target is 44px."
+    ]
+  },
+  "color": {
+    "bg": {
+      "light": "#f5f1e8",
+      "dark": "#161815"
+    },
+    "surface": {
+      "light": "#fcf8f0",
+      "dark": "#1c201c"
+    },
+    "surfaceRaised": {
+      "light": "#fffdf8",
+      "dark": "#252a25"
+    },
+    "surfaceStrong": {
+      "light": "#f2eadb",
+      "dark": "#303730"
+    },
+    "text": {
+      "light": "#1f241e",
+      "dark": "#f1eee5"
+    },
+    "textMuted": {
+      "light": "#51604c",
+      "dark": "#bcc7b7"
+    },
+    "border": {
+      "light": "#d5cbb7",
+      "dark": "#394238"
+    },
+    "borderStrong": {
+      "light": "#b9ac94",
+      "dark": "#566154"
+    },
+    "accent": {
+      "light": "#476a4f",
+      "dark": "#7fb188",
+      "onAccent": {
+        "light": "#f8f5ef",
+        "dark": "#152116"
+      }
+    },
+    "accentStrong": {
+      "light": "#2f4a35",
+      "dark": "#a4d1ac"
+    },
+    "highlight": {
+      "light": "#b96d3d",
+      "dark": "#d48d56"
+    },
+    "highlightSoft": {
+      "light": "#f1d3bf",
+      "dark": "#4a3322"
+    },
+    "success": {
+      "light": "#3d7a58",
+      "dark": "#74bc8e"
+    },
+    "warning": {
+      "light": "#a96d16",
+      "dark": "#e2b24f"
+    },
+    "danger": {
+      "light": "#9f4136",
+      "dark": "#d17a70"
+    },
+    "overlay": {
+      "light": "rgb(20 18 14 / 0.58)",
+      "dark": "rgb(5 8 5 / 0.72)"
+    }
+  },
+  "typography": {
+    "fontFamily": {
+      "display": "\"Bitter\", \"Iowan Old Style\", \"Book Antiqua\", Georgia, serif",
+      "body": "\"Manrope\", \"Avenir Next\", \"Segoe UI\", sans-serif"
+    },
+    "fontSize": {
+      "display": "clamp(2.75rem, 6vw, 4.75rem)",
+      "h1": "clamp(2.25rem, 4.5vw, 3.5rem)",
+      "h2": "clamp(1.75rem, 3vw, 2.5rem)",
+      "h3": "1.5rem",
+      "bodyLg": "1.125rem",
+      "body": "1rem",
+      "bodySm": "0.9375rem",
+      "label": "0.875rem",
+      "caption": "0.75rem"
+    },
+    "lineHeight": {
+      "tight": 1.1,
+      "heading": 1.2,
+      "body": 1.6
+    },
+    "measure": {
+      "bodyMax": "72ch",
+      "compact": "60ch"
+    }
+  },
+  "spacing": {
+    "2xs": "0.25rem",
+    "xs": "0.5rem",
+    "sm": "0.75rem",
+    "md": "1rem",
+    "lg": "1.5rem",
+    "xl": "2rem",
+    "2xl": "3rem",
+    "3xl": "4.5rem"
+  },
+  "radius": {
+    "sm": "0.5rem",
+    "md": "0.875rem",
+    "lg": "1.5rem",
+    "xl": "2rem",
+    "round": "999px"
+  },
+  "shadow": {
+    "sm": "0 0.5rem 1rem rgb(35 26 18 / 0.08)",
+    "md": "0 1rem 2rem rgb(35 26 18 / 0.14)",
+    "lg": "0 1.5rem 3rem rgb(35 26 18 / 0.18)"
+  },
+  "motion": {
+    "fast": "160ms ease",
+    "base": "240ms ease",
+    "slow": "360ms ease",
+    "reducedMotionPolicy": "Disable non-essential animation and smooth scrolling."
+  },
+  "layout": {
+    "container": {
+      "sm": "40rem",
+      "md": "64rem",
+      "lg": "76rem"
+    },
+    "breakpoint": {
+      "sm": "30rem",
+      "md": "48rem",
+      "lg": "64rem",
+      "xl": "80rem"
+    },
+    "touchTargetMin": "2.75rem",
+    "headerHeight": "5rem"
+  },
+  "elevation": {
+    "base": 0,
+    "header": 20,
+    "drawer": 40,
+    "modal": 60,
+    "toast": 80
+  },
+  "contrast": {
+    "bodyOnSurfaceLight": "14.91:1",
+    "mutedOnSurfaceLight": "6.34:1",
+    "primaryButtonLight": "5.61:1",
+    "primaryButtonStrongLight": "8.97:1",
+    "primaryButtonDark": "6.78:1",
+    "focusRingOnDark": "4.00:1",
+    "notes": [
+      "Focus rings satisfy the 3:1 non-text contrast requirement.",
+      "Body text and primary actions satisfy or exceed the 4.5:1 text contrast requirement."
+    ]
+  }
+}
