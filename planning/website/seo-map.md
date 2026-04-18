@@ -9,19 +9,19 @@
 
 ## URL To Metadata Map
 
-| URL | Primary intent | Suggested title tag | Meta description direction | Primary schema |
-| --- | --- | --- | --- | --- |
-| `/` | local reptile shop discovery | Beaverton Reptiles \| Reptiles, Feeders, Habitats & Supplies | Discover a trusted Beaverton reptile shop for healthy reptiles, feeder insects, habitats, and beginner-friendly guidance. | `LocalBusiness`, `PetStore`, `WebSite` |
-| `/product` | category browsing | Reptiles, Feeders & Habitat Supplies in Beaverton \| Beaverton Reptiles | Explore reptiles, feeder insects, enclosures, and care supplies with guidance from a local specialty shop. | `CollectionPage`, `ItemList` |
-| `/features` | differentiation | Why Local Reptile Owners Choose Beaverton Reptiles | Learn how humane care, knowledgeable staff, curated supplies, and beginner support set our shop apart. | `AboutPage` |
-| `/use-cases` | segmented intent | Reptile Buying Help for Beginners, Families & Keepers | Find the right path whether you are a first-time reptile buyer, feeder shopper, or experienced keeper. | `WebPage` |
-| `/pricing` | pricing expectations | Reptile Shop Pricing Guide in Beaverton \| Beaverton Reptiles | See pricing ranges for reptiles, feeders, enclosures, and starter setups before you visit or inquire. | `WebPage`, `FAQPage` if relevant |
-| `/get-started` | lead capture | Get Reptile Buying Help in Beaverton \| Beaverton Reptiles | Tell us what you are looking for and get beginner-friendly guidance on reptiles, feeders, and setups. | `ContactPage` |
-| `/about` | trust and story | About Beaverton Reptiles | Learn about our local shop, care philosophy, and commitment to healthy reptiles and helpful education. | `AboutPage`, `LocalBusiness` |
-| `/faq` | objection handling | Beaverton Reptiles FAQ | Get answers about pricing, setup, support, alternatives, and what to expect before visiting the store. | `FAQPage` |
-| `/contact` | local conversion | Contact Beaverton Reptiles \| Hours, Location & Inquiries | Call, visit, or send a message to Beaverton Reptiles for current availability, hours, and store directions. | `ContactPage`, `LocalBusiness` |
-| `/privacy-policy` | legal | Privacy Policy \| Beaverton Reptiles | Learn how Beaverton Reptiles collects, uses, and protects website and inquiry data. | `WebPage` |
-| `/terms-of-service` | legal | Terms of Service \| Beaverton Reptiles | Review the terms for using the Beaverton Reptiles website and related content. | `WebPage` |
+| URL                 | Primary intent               | Suggested title tag                                                     | Meta description direction                                                                                                | Primary schema                         |
+| ------------------- | ---------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| `/`                 | local reptile shop discovery | Beaverton Reptiles \| Reptiles, Feeders, Habitats & Supplies            | Discover a trusted Beaverton reptile shop for healthy reptiles, feeder insects, habitats, and beginner-friendly guidance. | `LocalBusiness`, `PetStore`, `WebSite` |
+| `/product`          | category browsing            | Reptiles, Feeders & Habitat Supplies in Beaverton \| Beaverton Reptiles | Explore reptiles, feeder insects, enclosures, and care supplies with guidance from a local specialty shop.                | `CollectionPage`, `ItemList`           |
+| `/features`         | differentiation              | Why Local Reptile Owners Choose Beaverton Reptiles                      | Learn how humane care, knowledgeable staff, curated supplies, and beginner support set our shop apart.                    | `AboutPage`                            |
+| `/use-cases`        | segmented intent             | Reptile Buying Help for Beginners, Families & Keepers                   | Find the right path whether you are a first-time reptile buyer, feeder shopper, or experienced keeper.                    | `WebPage`                              |
+| `/pricing`          | pricing expectations         | Reptile Shop Pricing Guide in Beaverton \| Beaverton Reptiles           | See pricing ranges for reptiles, feeders, enclosures, and starter setups before you visit or inquire.                     | `WebPage`, `FAQPage` if relevant       |
+| `/get-started`      | lead capture                 | Get Reptile Buying Help in Beaverton \| Beaverton Reptiles              | Tell us what you are looking for and get beginner-friendly guidance on reptiles, feeders, and setups.                     | `ContactPage`                          |
+| `/about`            | trust and story              | About Beaverton Reptiles                                                | Learn about our local shop, care philosophy, and commitment to healthy reptiles and helpful education.                    | `AboutPage`, `LocalBusiness`           |
+| `/faq`              | objection handling           | Beaverton Reptiles FAQ                                                  | Get answers about pricing, setup, support, alternatives, and what to expect before visiting the store.                    | `FAQPage`                              |
+| `/contact`          | local conversion             | Contact Beaverton Reptiles \| Hours, Location & Inquiries               | Call, visit, or send a message to Beaverton Reptiles for current availability, hours, and store directions.               | `ContactPage`, `LocalBusiness`         |
+| `/privacy-policy`   | legal                        | Privacy Policy \| Beaverton Reptiles                                    | Learn how Beaverton Reptiles collects, uses, and protects website and inquiry data.                                       | `WebPage`                              |
+| `/terms-of-service` | legal                        | Terms of Service \| Beaverton Reptiles                                  | Review the terms for using the Beaverton Reptiles website and related content.                                            | `WebPage`                              |
 
 ## Keyword Clusters
 

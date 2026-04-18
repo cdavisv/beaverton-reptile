@@ -1,75 +1,99 @@
 # Beaverton Reptiles Website
 
-This repository contains the planning and UX architecture foundation for the first version of the Beaverton Reptiles website. The site is intended for local reptile owners, first-time buyers, and families in Beaverton and the Portland metro area who need a trustworthy local shop for reptiles, feeder insects, habitats, and care guidance.
+This repository contains the first shippable version of the Beaverton Reptiles website: a responsive multi-page Next.js marketing site for local reptile owners, first-time buyers, and families in Beaverton and the Portland metro area. The site is built to help customers discover the store, understand what it offers, trust its care standards, and contact or visit the shop.
 
-The current repo state is a foundation handoff, not a shipped app yet. It includes the sitemap, page briefs, SEO map, content schema, and a reusable CSS token system that the implementation team can build from for a responsive Node-based website deployed to Vercel.
+The repo includes:
 
-## What Is In This Repo
+- A full App Router website covering `home`, `about`, `contact`, `faq`, `privacy-policy`, `terms-of-service`, `product`, `features`, `use-cases`, `pricing`, and `get-started`
+- Shared layout, CTA, FAQ, pricing, and form components
+- SEO metadata, sitemap, robots config, and local business structured data
+- A low-ops in-repo inquiry handler that stores submissions locally during development
+- Planning artifacts in `planning/website/*` that define the sitemap, copy direction, design system, and SEO map
+- Jest and React Testing Library coverage for reusable UI and form logic
 
-- `planning/website/sitemap.md`: site map, navigation tree, page hierarchy, and reusable page-template plan
-- `planning/website/page-briefs.md`: page-by-page UX, content, trust, and conversion requirements
-- `planning/website/seo-map.md`: search intent, metadata direction, internal linking, and schema recommendations
-- `planning/website/foundation.md`: design-system architecture, layout framework, responsive strategy, and repo topology guidance
-- `planning/website/design-system.css`: implementation-ready CSS custom properties, theme tokens, and layout primitives
-- `planning/website/design-tokens.json`: semantic design token catalog with light/dark values and accessibility notes
-- `planning/website/component-library.md`: component specs, interaction states, secondary-page templates, and UI QA checklist
-- `planning/contracts/site-content.schema.json`: JSON Schema for shared structured content across the marketing site
+## Stack
 
-## Planned Stack Assumption
+- Node.js 20+
+- npm 11+
+- Next.js 15 App Router
+- React 19
+- TypeScript strict mode
+- CSS custom properties and shared section components
+- Jest + React Testing Library
 
-Until another agent introduces application code, the working assumption for implementation is:
+## Project Structure
 
-- Runtime: Node.js 20+
-- Framework: Next.js App Router
-- Hosting: Vercel
-- Styling: CSS custom properties with utility and component layers
-- Data model: file-backed structured content for v1 plus form submission integration
-- Integrations: Google Maps embed/link, email notifications for lead forms, lightweight analytics
+```text
+app/                  Next.js routes, layout, metadata routes, and API handler
+components/           Shared layout, section, and form components
+content/              Shared site content and SEO data
+data/submissions/     Local development inquiry storage
+lib/                  SEO, validation, and submission helpers
+planning/             Sitemap, page briefs, design system, and SEO planning docs
+```
 
-These choices are documented only as implementation defaults. They are not yet scaffolded in code in this branch.
+## Prerequisites
 
-## Local Setup
+1. Install Node.js 20 or newer.
+2. Make sure `npm` is available in your shell.
 
-There is no runnable application in the repository yet, so there are currently no install, build, or start commands to run.
-
-To inspect the planning deliverables locally:
+## Install
 
 ```bash
-git clone https://github.com/cdavisv/beaverton-reptile.git
-cd beaverton-reptile
-find planning -maxdepth 3 -type f | sort
+npm install
 ```
 
 ## Environment Variables
 
-No environment variables are required for the current planning-only repository state.
-
-When the site is implemented, expect a future `.env.local` to include values similar to:
+Create a `.env.local` file in the repo root if you need a custom canonical site URL.
 
 ```bash
-NEXT_PUBLIC_SITE_URL=
-NEXT_PUBLIC_GA_ID=
-CONTACT_FORM_ENDPOINT=
-STORE_MAPS_URL=
+NEXT_PUBLIC_SITE_URL=https://www.beavertonreptiles.com
 ```
 
-These are placeholders for the planned architecture only and are not consumed by code in this branch.
+No API keys or external services are required to run the site locally.
+
+## Run Locally
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Then open `http://localhost:3000`.
+
+## Inquiry Handling
+
+- Contact and get-started forms submit to `POST /api/inquiries`
+- In local development, submissions are appended to `data/submissions/inquiries.jsonl`
+- This is a low-ops v1 implementation intended to keep the user-facing flow complete without adding external infrastructure
+
+## Quality Checks
+
+Run the full local verification set:
+
+```bash
+npm run lint
+npm run typecheck
+npm test -- --coverage
+npm run build
+npm run format:check
+```
 
 ## Verification Checklist
 
-Use this checklist to confirm the repo contains the expected foundation artifacts:
+Use this checklist after the first run:
 
-1. `planning/website/sitemap.md` exists and covers all required pages.
-2. `planning/website/page-briefs.md` exists and includes page-specific calls to action.
-3. `planning/website/seo-map.md` exists and maps metadata and schema by page intent.
-4. `planning/website/design-system.css` exists and defines light, dark, and system theme tokens.
-5. `planning/website/design-tokens.json` exists and mirrors the token semantics used in CSS.
-6. `planning/website/component-library.md` exists and covers components plus required secondary-page templates.
-7. `planning/contracts/site-content.schema.json` validates the planned structured content model.
+1. The homepage loads at `http://localhost:3000` with the Beaverton Reptiles hero, nav, and CTA sections.
+2. All required routes are reachable from the primary nav or footer.
+3. The contact page shows hours, address, map embed, and the inquiry form.
+4. Submitting a local form creates or appends `data/submissions/inquiries.jsonl`.
+5. `npm test -- --coverage` reports at least 80% total coverage for the measured shared code.
+6. `npm run build` completes successfully.
 
-## Next Implementation Priorities
+## Assumptions To Replace Before Production
 
-1. Scaffold the Next.js site shell and route structure that matches `planning/website/sitemap.md`.
-2. Adopt `planning/website/design-system.css` as the source of truth for tokens, themes, and primitives.
-3. Implement the shared content contract from `planning/contracts/site-content.schema.json`.
-4. Build page templates in this order: home, contact, product, about, FAQ, features, use-cases, pricing, get-started, legal pages.
+- Public contact details, hours, and the store address are currently implementation defaults because authoritative business data was not present in the repo brief.
+- Social profile links are placeholders and should be replaced with the store’s real accounts.
+- The in-repo file-based inquiry handler is suitable for local development and demos; production deployment should connect the same route to a durable notification or CRM destination.

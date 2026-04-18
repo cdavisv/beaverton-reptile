@@ -9,15 +9,15 @@
 
 ## Responsive Layout Rules
 
-| Token | Value | Usage |
-| --- | --- | --- |
-| `container-sm` | `40rem` | legal pages, FAQ, reading-heavy content |
-| `container-md` | `64rem` | forms, use-case layouts, comparison blocks |
-| `container-lg` | `76rem` | home hero, category grids, pricing pages |
-| `30rem` | small breakpoint | landscape phones, tighten clusters only |
-| `48rem` | medium breakpoint | introduce 2-column sections |
-| `64rem` | large breakpoint | hero split, sidebar layouts, sticky utilities |
-| `80rem` | x-large breakpoint | widen proof grids and image-led sections |
+| Token          | Value              | Usage                                         |
+| -------------- | ------------------ | --------------------------------------------- |
+| `container-sm` | `40rem`            | legal pages, FAQ, reading-heavy content       |
+| `container-md` | `64rem`            | forms, use-case layouts, comparison blocks    |
+| `container-lg` | `76rem`            | home hero, category grids, pricing pages      |
+| `30rem`        | small breakpoint   | landscape phones, tighten clusters only       |
+| `48rem`        | medium breakpoint  | introduce 2-column sections                   |
+| `64rem`        | large breakpoint   | hero split, sidebar layouts, sticky utilities |
+| `80rem`        | x-large breakpoint | widen proof grids and image-led sections      |
 
 ## Core Components
 
@@ -47,11 +47,11 @@
 
 ### Buttons
 
-| Variant | Background | Text | Border | Usage |
-| --- | --- | --- | --- | --- |
-| Primary | `accent` | `accent-contrast` | none | highest-intent actions |
-| Secondary | transparent | `text` | `border` | supporting actions |
-| Quiet | transparent | `accent` | none | inline links and lower-emphasis CTA rows |
+| Variant   | Background  | Text              | Border   | Usage                                    |
+| --------- | ----------- | ----------------- | -------- | ---------------------------------------- |
+| Primary   | `accent`    | `accent-contrast` | none     | highest-intent actions                   |
+| Secondary | transparent | `text`            | `border` | supporting actions                       |
+| Quiet     | transparent | `accent`          | none     | inline links and lower-emphasis CTA rows |
 
 - Padding: `12px 18px`
 - Radius: full pill
