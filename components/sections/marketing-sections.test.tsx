@@ -67,5 +67,8 @@ describe("marketing sections", () => {
     expect(screen.getByText("Pricing note")).toBeVisible();
     expect(screen.getByText("CTA title")).toBeVisible();
     expect(screen.getByText("Plan a smooth store visit.")).toBeVisible();
+    expect(
+      screen.getByRole("article", { name: "Plan a smooth store visit." }),
+    ).toBeVisible();
   });
 });

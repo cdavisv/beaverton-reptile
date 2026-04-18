@@ -1,4 +1,4 @@
-import { expect, test } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
 import { readFile, rm } from "node:fs/promises";
 import path from "node:path";
 
@@ -29,7 +29,29 @@ async function readLatestSubmission() {
   };
 }
 
-test.describe("contact inquiry flow", () => {
+async function expectSavedSubmission(expected: {
+  email: string;
+  interestCategory?: string;
+  message: string;
+  name: string;
+  source: string;
+  experienceLevel?: string;
+  budget?: string;
+}) {
+  await expect
+    .poll(readLatestSubmission, { message: "Expected saved inquiry record." })
+    .toMatchObject(expected);
+}
+
+async function expectNoAsideLandmarks(page: Page) {
+  await expect(page.locator("aside")).toHaveCount(0);
+}
+
+async function expectSubmissionMessage(page: Page, message: string) {
+  await expect(page.getByRole("status")).toHaveText(message);
+}
+
+test.describe("lead inquiry flow", () => {
   test.beforeEach(async () => {
     await rm(submissionFile, { force: true });
   });
@@ -38,6 +60,7 @@ test.describe("contact inquiry flow", () => {
     page,
   }) => {
     await page.goto("/contact");
+    await expectNoAsideLandmarks(page);
 
     await page.getByLabel("Name").fill("Jamie Rivers");
     await page.getByLabel("Email").fill("jamie@example.com");
@@ -48,20 +71,54 @@ test.describe("contact inquiry flow", () => {
 
     await page.getByRole("button", { name: "Send My Request" }).click();
 
-    await expect(
-      page.getByText(
-        "Thanks. We received your message and will follow up soon.",
-      ),
-    ).toBeVisible();
+    await expectSubmissionMessage(
+      page,
+      "Thanks. We received your message and will follow up soon.",
+    );
 
-    await expect
-      .poll(readLatestSubmission, { message: "Expected saved inquiry record." })
-      .toMatchObject({
-        email: "jamie@example.com",
-        interestCategory: "Feeders",
-        message: "Checking feeder availability before driving in this weekend.",
-        name: "Jamie Rivers",
-        source: "contact",
-      });
+    await expectSavedSubmission({
+      email: "jamie@example.com",
+      interestCategory: "Feeders",
+      message: "Checking feeder availability before driving in this weekend.",
+      name: "Jamie Rivers",
+      source: "contact",
+    });
+  });
+
+  test("submits the guided get-started form and persists the inquiry", async ({
+    page,
+  }) => {
+    await page.goto("/get-started");
+    await expectNoAsideLandmarks(page);
+
+    await page.getByLabel("Name").fill("Morgan Hale");
+    await page.getByLabel("Email").fill("morgan@example.com");
+    await page.getByLabel("Phone Optional").fill("503-555-0182");
+    await page.getByLabel("Interest category").selectOption("Habitats");
+    await page.getByLabel("Experience level").selectOption("Brand new");
+    await page.getByLabel("Budget range").selectOption("$150 to $400");
+    await page
+      .getByLabel("Message")
+      .fill(
+        "Need a beginner-friendly terrarium bundle for a first leopard gecko.",
+      );
+
+    await page.getByRole("button", { name: "Send My Request" }).click();
+
+    await expectSubmissionMessage(
+      page,
+      "Thanks. We received your request and will help you narrow the right next step.",
+    );
+
+    await expectSavedSubmission({
+      budget: "$150 to $400",
+      email: "morgan@example.com",
+      experienceLevel: "Brand new",
+      interestCategory: "Habitats",
+      message:
+        "Need a beginner-friendly terrarium bundle for a first leopard gecko.",
+      name: "Morgan Hale",
+      source: "get-started",
+    });
   });
 });

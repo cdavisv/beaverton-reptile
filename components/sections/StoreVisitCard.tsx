@@ -2,7 +2,7 @@ import { siteConfig } from "@/content/site";
 
 export function StoreVisitCard() {
   return (
-    <section
+    <article
       className="surface visit-card"
       aria-labelledby="store-visit-card-title"
     >
@@ -28,6 +28,6 @@ export function StoreVisitCard() {
           Open directions in Google Maps
         </a>
       </div>
-    </section>
+    </article>
   );
 }
