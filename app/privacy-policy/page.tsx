@@ -53,13 +53,16 @@ export default function PrivacyPolicyPage() {
               </p>
             </section>
           </div>
-          <aside className="surface legal-callout stack">
-            <h2>Policy scope</h2>
+          <section
+            className="surface legal-callout stack"
+            aria-labelledby="privacy-policy-scope-title"
+          >
+            <h2 id="privacy-policy-scope-title">Policy scope</h2>
             <p>
               This policy covers the website, inquiry forms, and related
               communications.
             </p>
-          </aside>
+          </section>
         </div>
       </section>
     </>

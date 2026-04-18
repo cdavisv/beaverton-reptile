@@ -17,3 +17,5 @@ node_modules/
 .next/
 coverage/
 tsconfig.tsbuildinfo
+playwright-report/
+test-results/

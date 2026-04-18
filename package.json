@@ -9,6 +9,7 @@
     "start": "next start",
     "lint": "eslint .",
     "test": "jest --runInBand",
+    "test:e2e": "playwright test",
     "test:watch": "jest --watch",
     "typecheck": "tsc --noEmit",
     "format:check": "prettier --check ."
@@ -22,6 +23,7 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
+    "@playwright/test": "^1.54.2",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.15.3",
     "@types/react": "^19.1.2",
