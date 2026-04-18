@@ -1,7 +1,8 @@
 :root {
   color-scheme: light dark;
 
-  --font-family-display: "Bitter", "Iowan Old Style", "Book Antiqua", Georgia, serif;
+  --font-family-display:
+    "Bitter", "Iowan Old Style", "Book Antiqua", Georgia, serif;
   --font-family-body: "Manrope", "Avenir Next", "Segoe UI", sans-serif;
 
   --font-size-display: clamp(2.75rem, 6vw, 4.75rem);
@@ -133,8 +134,16 @@ body {
   font-size: var(--font-size-body);
   line-height: var(--line-height-body);
   background:
-    radial-gradient(circle at top right, rgb(185 109 61 / 0.18), transparent 28%),
-    radial-gradient(circle at bottom left, rgb(71 106 79 / 0.18), transparent 24%),
+    radial-gradient(
+      circle at top right,
+      rgb(185 109 61 / 0.18),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgb(71 106 79 / 0.18),
+      transparent 24%
+    ),
     var(--color-bg);
   color: var(--color-text);
 }
@@ -311,7 +320,10 @@ textarea:focus-visible {
 }
 
 .card-interactive {
-  transition: transform var(--motion-fast), box-shadow var(--motion-base), border-color var(--motion-base);
+  transition:
+    transform var(--motion-fast),
+    box-shadow var(--motion-base),
+    border-color var(--motion-base);
 }
 
 .card-interactive:hover {
@@ -369,7 +381,11 @@ textarea:focus-visible {
   display: grid;
   gap: var(--space-md);
   padding: var(--space-lg);
-  background: color-mix(in srgb, var(--color-surface) 88%, var(--color-accent) 12%);
+  background: color-mix(
+    in srgb,
+    var(--color-surface) 88%,
+    var(--color-accent) 12%
+  );
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
 }

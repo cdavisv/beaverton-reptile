@@ -3,21 +3,11 @@
   "$id": "https://beavertonreptiles.local/schemas/site-content.schema.json",
   "title": "Beaverton Reptiles Site Content",
   "type": "object",
-  "required": [
-    "site",
-    "navigation",
-    "pages"
-  ],
+  "required": ["site", "navigation", "pages"],
   "properties": {
     "site": {
       "type": "object",
-      "required": [
-        "name",
-        "primaryPhone",
-        "address",
-        "hours",
-        "primaryCtas"
-      ],
+      "required": ["name", "primaryPhone", "address", "hours", "primaryCtas"],
       "properties": {
         "name": {
           "type": "string",
@@ -33,12 +23,7 @@
         },
         "address": {
           "type": "object",
-          "required": [
-            "street",
-            "city",
-            "region",
-            "postalCode"
-          ],
+          "required": ["street", "city", "region", "postalCode"],
           "properties": {
             "street": {
               "type": "string"
@@ -59,10 +44,7 @@
           "type": "array",
           "items": {
             "type": "object",
-            "required": [
-              "label",
-              "value"
-            ],
+            "required": ["label", "value"],
             "properties": {
               "label": {
                 "type": "string"
@@ -78,10 +60,7 @@
           "type": "array",
           "items": {
             "type": "object",
-            "required": [
-              "label",
-              "href"
-            ],
+            "required": ["label", "href"],
             "properties": {
               "label": {
                 "type": "string"
@@ -106,10 +85,7 @@
     },
     "navigation": {
       "type": "object",
-      "required": [
-        "header",
-        "footer"
-      ],
+      "required": ["header", "footer"],
       "properties": {
         "header": {
           "type": "array",
@@ -137,10 +113,7 @@
   "$defs": {
     "cta": {
       "type": "object",
-      "required": [
-        "label",
-        "href"
-      ],
+      "required": ["label", "href"],
       "properties": {
         "label": {
           "type": "string"
@@ -150,21 +123,14 @@
         },
         "variant": {
           "type": "string",
-          "enum": [
-            "primary",
-            "secondary",
-            "text"
-          ]
+          "enum": ["primary", "secondary", "text"]
         }
       },
       "additionalProperties": false
     },
     "navItem": {
       "type": "object",
-      "required": [
-        "label",
-        "href"
-      ],
+      "required": ["label", "href"],
       "properties": {
         "label": {
           "type": "string"
@@ -177,11 +143,7 @@
     },
     "hero": {
       "type": "object",
-      "required": [
-        "eyebrow",
-        "title",
-        "description"
-      ],
+      "required": ["eyebrow", "title", "description"],
       "properties": {
         "eyebrow": {
           "type": "string"
@@ -203,10 +165,7 @@
     },
     "section": {
       "type": "object",
-      "required": [
-        "kind",
-        "heading"
-      ],
+      "required": ["kind", "heading"],
       "properties": {
         "kind": {
           "type": "string",
@@ -232,10 +191,7 @@
     },
     "seo": {
       "type": "object",
-      "required": [
-        "title",
-        "description"
-      ],
+      "required": ["title", "description"],
       "properties": {
         "title": {
           "type": "string",
@@ -259,24 +215,14 @@
     },
     "page": {
       "type": "object",
-      "required": [
-        "slug",
-        "template",
-        "hero",
-        "sections",
-        "seo"
-      ],
+      "required": ["slug", "template", "hero", "sections", "seo"],
       "properties": {
         "slug": {
           "type": "string"
         },
         "template": {
           "type": "string",
-          "enum": [
-            "conversion-landing",
-            "authority-detail",
-            "support-utility"
-          ]
+          "enum": ["conversion-landing", "authority-detail", "support-utility"]
         },
         "hero": {
           "$ref": "#/$defs/hero"
