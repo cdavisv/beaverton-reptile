@@ -52,6 +52,8 @@ planning/
 - `base.css`: element resets, body defaults, typography defaults, focus styles
 - `utilities.css`: layout helpers such as stack, cluster, grid, container, visually-hidden
 - `components.css`: button, card, nav, form, section-shell, accordion, stat, badge
+- `planning/website/design-tokens.json`: implementation-neutral token source for design, content, and frontend handoff
+- `planning/website/component-library.md`: component specs, state definitions, responsive templates, and QA guidance
 
 Prefer semantic tokens over raw scales in component code. Example: use `--color-surface-raised`, not `#f4ead7`.
 
@@ -153,6 +155,14 @@ See `planning/contracts/site-content.schema.json` for the machine-readable contr
 - Map and hours panel
 - CTA banner
 
+## UI Foundation Deliverables
+
+- `planning/website/design-system.css`: working CSS token and primitive reference
+- `planning/website/design-tokens.json`: source-of-truth semantic token catalog with contrast notes
+- `planning/website/component-library.md`: component measurements, interaction states, and secondary-page template patterns
+
+These three files should stay aligned. If a token or component changes in one, update the others in the same change set.
+
 ## Accessibility Requirements
 
 - Visible keyboard focus on all interactive elements
@@ -160,12 +170,13 @@ See `planning/contracts/site-content.schema.json` for the machine-readable contr
 - Color contrast at or above WCAG AA
 - Accordion, nav toggle, and theme toggle must be screen-reader labeled
 - Respect `prefers-reduced-motion`
+- Validate both light and dark theme states before releasing new components
 
 ## Implementation Priority
 
 1. Adopt shared schema and route topology
-2. Install token and theme layers from `design-system.css`
-3. Build layout primitives and page shells
+2. Install token and theme layers from `design-system.css` and `design-tokens.json`
+3. Build layout primitives and page shells from `component-library.md`
 4. Implement reusable sections
 5. Populate pages from structured content
 6. Add metadata and schema markup
